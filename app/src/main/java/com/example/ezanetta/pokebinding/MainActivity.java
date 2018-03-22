@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.ezanetta.pokebinding.databinding.ActivityMainBinding;
 
@@ -80,8 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
             for(int i = 0; i < pokemonsJson.length(); i++){
 
-                String name = pokemonsJson.getJSONObject(i).getString("pokemon-name");
-                String url = pokemonsJson.getJSONObject(i).getString("image-url");
+                String name = pokemonsJson.getJSONObject(i).getString("name");
+                //Log.d("app","name:"+name);
+                String url = pokemonsJson.getJSONObject(i).getString("img");
+                //Log.d("app","url:"+url);
 
                 Pokemon pokemon = new Pokemon(name, url);
                 pokemons.add(pokemon);

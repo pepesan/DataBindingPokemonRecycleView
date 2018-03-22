@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -40,7 +41,8 @@ public class Pokemon implements Parcelable{
 
     @BindingAdapter({"bind:imageUrl", "bind:error"})
     public static void loadImage(ImageView view, String url, Drawable error){
-        Picasso.with(view.getContext()).load(url).error(error).into(view);
+        //Log.d("app","imageUrl:"+imageUrl);
+        Picasso.get().load(url).error(error).into(view);
     }
 
     @Override
@@ -52,5 +54,13 @@ public class Pokemon implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(url);
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
